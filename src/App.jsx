@@ -1,8 +1,9 @@
 import { useState } from "react";
-import UserTable from "./components/UserTable";
 import "./App.css";
 import { useFetch } from "./hooks/useFetch";
-import { Pagination } from "./components/Pagination";
+import { Pagination } from "./components/Pagination/Pagination";
+import UserTable from "./components/UserTable/UserTable";
+import { Select } from "./components/Select/Select";
 
 function App() {
   const [sortConfig, setSortConfig] = useState({ key: "", direction: "" });
@@ -31,17 +32,12 @@ function App() {
   return (
     <div className="app-container">
       <h1>Таблица пользователей</h1>
-
-      {loading && <p>Загрузка...</p>}
+      
+      {loading && <div className="loader"></div>}
       {error && <p className="error">{error}</p>}
+
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <div>
-          <select onChange={(e) => setLimit(+e.target.value)} value={limit}>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-          </select>
-        </div>
+       <Select limit={limit} setLimit={setLimit} />
         {data.users && (
           <UserTable
             users={data.users}

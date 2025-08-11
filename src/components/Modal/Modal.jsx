@@ -1,13 +1,14 @@
 import ReactDOM from "react-dom";
+import styles from "./Modal.module.css";
 
 export default function Modal({ children, onClose }) {
   return ReactDOM.createPortal(
-    <div className="modal-overlay" onClick={onClose}>
+    <div className={styles["modal-overlay"]} onClick={onClose}>
       <div
-        className="modal-content"
+        className={styles["modal-content"]}
         onClick={(e) => e.stopPropagation()} 
       >
-        <button className="modal-close" onClick={onClose}>
+        <button className={styles["modal-close"]} onClick={onClose}>
           ✖
         </button>
         {children}

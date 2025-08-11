@@ -1,19 +1,21 @@
+import styles from "./Pagination.module.css";
+
 export const Pagination = ({ pages, limit, skip, setSkip }) => {
   return (
-    <div className="pagination">
+    <div className={styles["pagination"]}>
       <button
-        className="pagination__btn"
+        className={styles["pagination__btn"]}
         onClick={() => setSkip((prev) => Math.max(prev - limit, 0))}
         disabled={skip === 0}
         aria-label="Предыдущая страница"
       >
         ←
       </button>
-      <span className="pagination__info">{`Страница ${
+      <span className={styles["pagination__page"]}>{`Страница ${
         Math.ceil(skip / limit) + 1
       } из ${pages}`}</span>
       <button
-        className="pagination__btn"
+        className={styles["pagination__btn"]}
         onClick={() =>
           setSkip((prev) => Math.min(prev + limit, (pages - 1) * limit))
         }

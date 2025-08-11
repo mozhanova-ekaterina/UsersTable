@@ -1,14 +1,15 @@
 import { useState } from "react";
-import TableHeader from "./TableHeader";
-import TableRow from "./TableRow";
-import Modal from "./Modal";
+import styles from "./UserTable.module.css";
+import TableHeader from "../TableHeader/TableHeader";
+import TableRow from "../TableRow/TableRow";
+import Modal from "../Modal/Modal";
 
 export default function UserTable({ users, sortConfig, onSort }) {
   const [selectedUser, setSelectedUser] = useState(null);
 
   return (
     <>
-      <table className="user-table">
+      <table className={styles["user-table"]}>
         <thead>
           <tr>
             <TableHeader
