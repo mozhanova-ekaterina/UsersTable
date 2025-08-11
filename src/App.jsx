@@ -36,7 +36,7 @@ function App() {
       {error && <p className="error">{error}</p>}
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <div>
-          <select onChange={(e) => setLimit(e.target.value)} value={limit}>
+          <select onChange={(e) => setLimit(+e.target.value)} value={limit}>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
